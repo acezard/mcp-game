@@ -233,9 +233,7 @@ function shootUltimate() {
   if (!state.running || state.player.power < 100) return;
   state.player.power = 0;
   state.enemyBullets = [];
-  for (let i = 0; i < 180; i += 1) {
-    spawnPlayerBullet(i * 2, true);
-  }
+  for (let i = 0; i < 180; i += 1) spawnPlayerBullet(i * 2, true);
   burst(state.player.x + state.player.width / 2, state.player.y + state.player.height / 2, 55, '#98cfff');
 }
 
@@ -245,9 +243,7 @@ function enemyShoot(enemy) {
   if (enemy.type === 'redBomber') {
     if (state.elapsed < enemy.burstCooldownUntil) return;
     if (state.elapsed - enemy.lastFire >= 0.1 && enemy.burstLeft > 0) {
-      for (const angle of [80, 90, 100]) {
-        spawnEnemyBullet(enemy, angle, 'redBullet', 200, 12, 11, 20);
-      }
+      for (const angle of [80, 90, 100]) spawnEnemyBullet(enemy, angle, 'redBullet', 200, 12, 11, 20);
       enemy.burstLeft -= 1;
       enemy.lastFire = state.elapsed;
       if (enemy.burstLeft === 0) enemy.burstCooldownUntil = state.elapsed + 1;
@@ -520,7 +516,7 @@ function draw(nowMs) {
   }
 
   const blinking = nowMs < state.player.invulnerableUntil && Math.floor(nowMs / 90) % 2 === 0;
-  if (!blinking) ctx.drawImage(images.player, state.player.x, state.player.y, state.player.width, state.player.height);
+  if (!blinking && images.player) ctx.drawImage(images.player, state.player.x, state.player.y, state.player.width, state.player.height);
 
   ctx.save();
   ctx.strokeStyle = state.player.power >= 100 ? 'rgba(142, 221, 255, .9)' : 'rgba(255, 88, 96, .75)';
