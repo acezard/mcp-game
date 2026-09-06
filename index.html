@@ -3,29 +3,47 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VOID RUN</title>
+  <title>Ace Force One — Revival</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <main class="shell">
+    <header class="titlebar">
+      <div>
+        <p class="eyebrow">2016 CANVAS STUDY · 2026 REIMPLEMENTATION</p>
+        <h1>ACE FORCE ONE</h1>
+      </div>
+      <div class="status" id="status">LOADING ASSETS</div>
+    </header>
+
     <section class="hud" aria-label="Game status">
-      <div><span class="label">SCORE</span><span id="score">0</span></div>
-      <div><span class="label">BEST</span><span id="best">0</span></div>
-      <div><span class="label">LEVEL</span><span id="level">1</span></div>
+      <div><span class="label">SCORE</span><strong id="score">000000</strong></div>
+      <div><span class="label">HP</span><strong id="hp">100</strong></div>
+      <div><span class="label">POWER</span><strong id="power">0%</strong></div>
+      <div><span class="label">LIVES</span><strong id="lives">3</strong></div>
+      <div><span class="label">TIME</span><strong id="time">0.0</strong></div>
     </section>
 
     <div class="frame">
-      <canvas id="game" width="960" height="600" aria-label="VOID RUN game canvas"></canvas>
+      <canvas id="game" width="800" height="800" aria-label="Ace Force One shoot em up"></canvas>
       <div id="overlay" class="overlay">
-        <h1>VOID RUN</h1>
-        <p>Survive the swarm. Collect energy shards. Keep moving.</p>
-        <p class="controls">WASD / ARROWS · SPACE TO START</p>
+        <div class="panel">
+          <p class="eyebrow">OPENING STAGE REBUILT FROM THE ORIGINAL SOURCE</p>
+          <h2>ACE FORCE ONE</h2>
+          <p>Move with the mouse. Your main cannon fires automatically.</p>
+          <p>When POWER reaches 100%, click inside the playfield to discharge the radial weapon.</p>
+          <button id="start" type="button" disabled>LOADING…</button>
+        </div>
       </div>
     </div>
 
-    <p class="hint">Move to evade enemies. Cyan shards increase score and briefly slow the swarm.</p>
+    <footer>
+      <span>Mouse / pointer to move</span>
+      <span>WASD / arrows also supported</span>
+      <span>Click at 100% power for ultimate</span>
+    </footer>
   </main>
 
-  <script src="game.js"></script>
+  <script type="module" src="game.js"></script>
 </body>
 </html>
